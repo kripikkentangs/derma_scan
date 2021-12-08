@@ -12,7 +12,7 @@ class _BodyScanState extends State<BodyScan> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Containe
+        child: Container(
           child: Center(
             child: Column(
               children: [
