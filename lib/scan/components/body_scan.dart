@@ -131,7 +131,7 @@ class _BodyScanState extends State<BodyScan> {
             width: 350,
             child: Center(
               child: Text(
-                'It\'s ${_output![0]['label']}',
+                '${_output![0]['label']}',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Colors.white,
