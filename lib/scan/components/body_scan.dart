@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:tflite/tflite.dart';
@@ -13,36 +14,49 @@ class BodyScan extends StatefulWidget {
 }
 
 class _BodyScanState extends State<BodyScan> {
-
   bool _loading = true;
   File? _image;
   List? _output;
   final picker = ImagePicker();
 
+  Future getImages(ImageSource source) async {
+    var image = await picker.getImage(
+      source: source,
+      maxWidth: 1920,
+      maxHeight: 1920,
+    );
 
-  pickCameraImage() async {
-    var image = await picker.getImage(source: ImageSource.camera);
+    if (image != null) {
+      File? croppedImage = await ImageCropper.cropImage(
+          sourcePath: image.path,
+          aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
+          compressQuality: 75,
+          maxWidth: 720,
+          maxHeight: 720,
+          compressFormat: ImageCompressFormat.jpg,
+          androidUiSettings: AndroidUiSettings(
+            lockAspectRatio: true,
+            toolbarColor: Color.fromRGBO(43, 34, 34, 1.0),
+            toolbarTitle: "Crop The Image",
+            toolbarWidgetColor: Colors.white,
+            statusBarColor: Color.fromRGBO(43, 34, 34, 1.0),
+            backgroundColor: Colors.grey[900],
+            cropGridColor: Colors.white38,
+            cropFrameColor: Colors.white,
+            hideBottomControls: true,
+          ));
+      classifyImage(croppedImage!);
 
-    if (image == null) return null;
-
-    setState(() {
-      _image = File(image.path);
-    });
-    classifyImage(_image!);
+      setState(() {
+        _image = croppedImage;
+        _loading = false;
+      });
+    } else {
+      _loading = false;
+    }
   }
 
-  pickGalleryImage() async {
-    var image = await picker.getImage(source: ImageSource.gallery);
-
-    if (image == null) return null;
-
-    setState(() {
-      _image = File(image.path);
-    });
-    classifyImage(_image!);
-  }
-
-  classifyImage(File image) async {
+  Future classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
         path: image.path,
         numResults: 2,
@@ -99,51 +113,51 @@ class _BodyScanState extends State<BodyScan> {
   getImage() {
     if (_loading) {
       return AspectRatio(
-      aspectRatio: 1,
-      child: Image.asset(
-        "assets/images/placeholder.jpg",
-        fit: BoxFit.fill,
-      ),
-    );
+        aspectRatio: 1,
+        child: Image.asset(
+          "assets/images/placeholder.jpg",
+          fit: BoxFit.fill,
+        ),
+      );
     } else {
       return Container(
-      child: Column(
-        children: [
-          AspectRatio(
-            aspectRatio: 1,
-            child: Image.file(_image!),
-          ),
-        ],
-      ),
-    );
+        child: Column(
+          children: [
+            AspectRatio(
+              aspectRatio: 1,
+              child: Image.file(_image!, fit: BoxFit.cover),
+            ),
+          ],
+        ),
+      );
     }
   }
 
   getResult() {
     if (_output != null) {
       return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 20),
-          color: Colors.blue[900],
-          child: SizedBox(
-            height: 40,
-            width: 350,
-            child: Center(
-              child: Text(
-                '${_output![0]['label']}',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            color: Colors.blue[900],
+            child: SizedBox(
+              height: 40,
+              width: 350,
+              child: Center(
+                child: Text(
+                  '${_output![0]['label']}',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
             ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
     } else {
       return Column(
         children: [
@@ -180,14 +194,14 @@ class _BodyScanState extends State<BodyScan> {
           foregroundColor: Colors.white,
           backgroundColor: Colors.grey[850],
           label: 'Camera',
-          onPressed: () => pickCameraImage(),
+          onPressed: () => getImages(ImageSource.camera),
         ),
         SpeedDialChild(
           child: const Icon(Icons.add_photo_alternate),
           foregroundColor: Colors.white,
           backgroundColor: Colors.grey[850],
           label: 'Gallery',
-          onPressed: () => pickGalleryImage(),
+          onPressed: () => getImages(ImageSource.gallery),
         )
       ],
       closedForegroundColor: Colors.white,
