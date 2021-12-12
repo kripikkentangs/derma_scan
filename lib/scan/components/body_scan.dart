@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:tflite/tflite.dart';
-
 import '../../const.dart';
 
 class BodyScan extends StatefulWidget {
@@ -103,7 +101,7 @@ class _BodyScanState extends State<BodyScan> {
               children: [
                 getImage(),
                 getResult(),
-                // getConfident(),
+                getConfidence(),
               ],
             ),
           ),
@@ -171,8 +169,59 @@ class _BodyScanState extends State<BodyScan> {
                       color: Colors.white,
                       fontFamily: 'Poppins',
                       fontSize: 25,
-                      fontWeight: FontWeight.bold
-                  ),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Column(
+        children: [
+          Container(),
+        ],
+      );
+    }
+  }
+
+  getConfidence() {
+    if (_output != null) {
+      return Column(
+        children: [
+          Container(
+            color: Colors.blue[900],
+            margin: EdgeInsets.only(top: 20),
+            child: SizedBox(
+              height: 40,
+              width: 350,
+              child: Center(
+                child: Text(
+                  'Accuracy',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(bottom: 20),
+            color: Colors.grey[700],
+            child: SizedBox(
+              height: 100,
+              width: 350,
+              child: Center(
+                child: Text(
+                  'Confidence ${_output![0]['confidence'].toString()}',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),
@@ -226,5 +275,6 @@ class _BodyScanState extends State<BodyScan> {
       openBackgroundColor: Colors.white,
     );
   }
+
   // getConfident() {}
 }
