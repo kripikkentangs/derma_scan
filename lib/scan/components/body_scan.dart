@@ -6,6 +6,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:tflite/tflite.dart';
 
+import '../../const.dart';
+
 class BodyScan extends StatefulWidget {
   const BodyScan({Key? key}) : super(key: key);
 
@@ -36,11 +38,11 @@ class _BodyScanState extends State<BodyScan> {
           compressFormat: ImageCompressFormat.jpg,
           androidUiSettings: AndroidUiSettings(
             lockAspectRatio: true,
-            toolbarColor: Color.fromRGBO(43, 34, 34, 1.0),
+            toolbarColor: kBackgroundColor,
             toolbarTitle: "Crop The Image",
-            toolbarWidgetColor: Colors.white,
-            statusBarColor: Color.fromRGBO(43, 34, 34, 1.0),
-            backgroundColor: Colors.grey[900],
+            toolbarWidgetColor: kTextColor,
+            statusBarColor: kBackgroundColor,
+            backgroundColor: kStatusBarColor,
             cropGridColor: Colors.white38,
             cropFrameColor: Colors.white,
             hideBottomControls: true,
@@ -145,13 +147,32 @@ class _BodyScanState extends State<BodyScan> {
               width: 350,
               child: Center(
                 child: Text(
+                  'Classification Result',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Poppins',
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+          ),
+          Container(
+            color: Color(0xFF878787),
+            child: SizedBox(
+              height: 100,
+              width: 350,
+              child: Center(
+                child: Text(
                   '${_output![0]['label']}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold
+                  ),
                 ),
               ),
             ),
@@ -163,20 +184,15 @@ class _BodyScanState extends State<BodyScan> {
         children: [
           Container(
             margin: EdgeInsets.only(top: 20),
-            color: Colors.blue[900],
-            child: SizedBox(
-              height: 40,
-              width: 350,
-              child: Center(
-                child: Text(
-                  'Classification Result',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontFamily: 'Poppins',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
+            child: Center(
+              child: Text(
+                'No Image Detected',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: kTextColor,
+                    fontFamily: 'Poppins',
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold),
               ),
             ),
           ),
