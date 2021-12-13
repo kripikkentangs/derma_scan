@@ -21,6 +21,10 @@ class _BodyScanState extends State<BodyScan> {
   final picker = ImagePicker();
 
   Future getImages(ImageSource source) async {
+    setState(() {
+      _loading = true;
+    });
+
     var image = await picker.getImage(
       source: source,
       maxWidth: 1920,
@@ -53,7 +57,9 @@ class _BodyScanState extends State<BodyScan> {
         _loading = false;
       });
     } else {
-      _loading = false;
+      setState(() {
+        _loading = false;
+      });
     }
   }
 
