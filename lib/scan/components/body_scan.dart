@@ -91,7 +91,10 @@ class _BodyScanState extends State<BodyScan> {
   void initState() {
     super.initState();
     _loading = false;
-    loadModel().then((value) {});
+
+    loadModel().then((value) {
+      _loading = false;
+    });
   }
 
   @override
