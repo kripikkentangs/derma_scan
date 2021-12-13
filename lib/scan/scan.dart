@@ -22,7 +22,7 @@ class Scan extends StatelessWidget {
       elevation: 0,
       centerTitle: true,
       title: Text(
-        'Derma Scan',
+        'Scan',
         style: kDefaultFont,
       ),
     );

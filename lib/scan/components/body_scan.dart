@@ -14,7 +14,7 @@ class BodyScan extends StatefulWidget {
 }
 
 class _BodyScanState extends State<BodyScan> {
-  bool _loading = true;
+  bool _loading = false;
   File? _image;
   List? _output;
   String? _confidenceStr;
@@ -90,7 +90,7 @@ class _BodyScanState extends State<BodyScan> {
   @override
   void initState() {
     super.initState();
-    _loading = true;
+    _loading = false;
     loadModel().then((value) {});
   }
 
@@ -102,26 +102,41 @@ class _BodyScanState extends State<BodyScan> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: buildSpeedDials(),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Center(
-            child: Column(
-              children: [
-                getImage(),
-                getResult(),
-                getConfidence(),
-              ],
+    return Stack(
+      children: [
+        Scaffold(
+          floatingActionButton: buildSpeedDials(),
+          body: SingleChildScrollView(
+            child: Container(
+              child: Center(
+                child: Column(
+                  children: [
+                    getImage(),
+                    getResult(),
+                    getConfidence(),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
-      ),
+        (_loading)
+            ? Container(
+                height: MediaQuery.of(context).size.height * 1,
+                color: Color.fromRGBO(15, 15, 15, 0.85),
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.pink,
+                  ),
+                ),
+              )
+            : Center()
+      ],
     );
   }
 
   getImage() {
-    if (_loading) {
+    if (_image == null) {
       return AspectRatio(
         aspectRatio: 1,
         child: Image.asset(
