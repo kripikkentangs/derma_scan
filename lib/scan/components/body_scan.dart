@@ -17,6 +17,7 @@ class _BodyScanState extends State<BodyScan> {
   bool _loading = true;
   File? _image;
   List? _output;
+  String? _confidenceStr;
   final picker = ImagePicker();
 
   Future getImages(ImageSource source) async {
@@ -67,6 +68,9 @@ class _BodyScanState extends State<BodyScan> {
     setState(() {
       _loading = false;
       _output = output;
+
+      _confidenceStr =
+          (_output![0]['confidence'] * 100).toStringAsFixed(0) + "%";
     });
   }
 
@@ -215,7 +219,8 @@ class _BodyScanState extends State<BodyScan> {
               width: 350,
               child: Center(
                 child: Text(
-                  'Confidence ${_output![0]['confidence'].toString()}',
+                  _confidenceStr!,
+                  // '${_output![0]['confidence'].toString()}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
