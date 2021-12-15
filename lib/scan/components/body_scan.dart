@@ -167,7 +167,7 @@ class _BodyScanState extends State<BodyScan> {
         children: [
           Container(
             margin: EdgeInsets.only(top: 20),
-            color: Colors.blue[900],
+            color: Color(0xFF50556F),
             child: SizedBox(
               height: 40,
               width: 350,
@@ -178,14 +178,14 @@ class _BodyScanState extends State<BodyScan> {
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',
-                      fontSize: 19,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
             ),
           ),
           Container(
-            color: Color(0xFF878787),
+            color: Colors.white,
             child: SizedBox(
               height: 100,
               width: 350,
@@ -194,9 +194,9 @@ class _BodyScanState extends State<BodyScan> {
                   '${_output![0]['label']}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFF50556F),
                       fontFamily: 'Poppins',
-                      fontSize: 25,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -218,7 +218,7 @@ class _BodyScanState extends State<BodyScan> {
       return Column(
         children: [
           Container(
-            color: Colors.blue[900],
+            color: Color(0xFF50556F),
             margin: EdgeInsets.only(top: 20),
             child: SizedBox(
               height: 40,
@@ -229,7 +229,7 @@ class _BodyScanState extends State<BodyScan> {
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',
-                      fontSize: 20,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
@@ -237,7 +237,7 @@ class _BodyScanState extends State<BodyScan> {
           ),
           Container(
             margin: EdgeInsets.only(bottom: 20),
-            color: Colors.grey[700],
+            color: Colors.white,
             child: SizedBox(
               height: 100,
               width: 350,
@@ -247,9 +247,9 @@ class _BodyScanState extends State<BodyScan> {
                   // '${_output![0]['confidence'].toString()}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFF50556F),
                       fontFamily: 'Poppins',
-                      fontSize: 25,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold),
                 ),
               ),
