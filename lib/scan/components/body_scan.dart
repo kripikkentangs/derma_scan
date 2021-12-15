@@ -75,7 +75,8 @@ class _BodyScanState extends State<BodyScan> {
       _loading = false;
       _output = output;
 
-      _confidenceFix = (_output![0]['confidence'] * 100).toString() + "%";
+      _confidenceFix =
+          (_output![0]['confidence'] * 100).toStringAsFixed(0) + "%";
     });
   }
 
