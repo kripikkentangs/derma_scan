@@ -82,8 +82,8 @@ class _BodyScanState extends State<BodyScan> {
 
   loadModel() async {
     await Tflite.loadModel(
-      model: 'assets/models/modelres.tflite',
-      labels: 'assets/models/labels.txt',
+      model: 'assets/models/modelresnew.tflite',
+      labels: 'assets/models/labelsnew.txt',
     );
   }
 
