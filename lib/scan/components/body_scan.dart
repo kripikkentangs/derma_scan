@@ -143,7 +143,7 @@ class _BodyScanState extends State<BodyScan> {
       return AspectRatio(
         aspectRatio: 1,
         child: Image.asset(
-          "assets/images/placeholder.jpg",
+          "assets/images/img placement.jpg",
           fit: BoxFit.fill,
         ),
       );

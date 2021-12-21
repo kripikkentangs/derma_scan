@@ -21,6 +21,9 @@ class Scan extends StatelessWidget {
       brightness: Brightness.light,
       elevation: 0,
       centerTitle: true,
+      leading: BackButton(
+        color: kTextColor,
+      ),
       title: Text(
         'Scan',
         style: kDefaultFont,
