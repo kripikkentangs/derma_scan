@@ -36,10 +36,11 @@ dependencies:
   flutter_native_splash: ^1.0.0
 
 flutter_native_splash:
-  color: "#4D4D4D"
-  image: assets/images/derma logo1.png
+  color: "#EEEDE7"
+  image: assets/images/derma splash400.png
   android: true
   ios: true
+  web: false
 
 dev_dependencies:
   flutter_test:
