@@ -82,8 +82,8 @@ class _BodyScanState extends State<BodyScan> {
 
   loadModel() async {
     await Tflite.loadModel(
-      model: 'assets/models/modelres3b.tflite',
-      labels: 'assets/models/labelsres3b.txt',
+      model: 'assets/models/modelresai7.tflite',
+      labels: 'assets/models/labelsres.txt',
     );
   }
 
@@ -165,16 +165,26 @@ class _BodyScanState extends State<BodyScan> {
     if (_output != null) {
       return Column(
         children: [
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            color: Color(0xFF50556F),
-            child: SizedBox(
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Container(
               height: 40,
-              width: 350,
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(
+                color: Color(0xFF50556F),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Center(
                 child: Text(
                   'Classification Result',
-                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'Poppins',
@@ -184,11 +194,22 @@ class _BodyScanState extends State<BodyScan> {
               ),
             ),
           ),
-          Container(
-            color: Colors.white,
-            child: SizedBox(
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Container(
               height: 100,
-              width: 350,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Center(
                 child: Text(
                   '${_output![0]['label']}',
@@ -217,12 +238,23 @@ class _BodyScanState extends State<BodyScan> {
     if (_output != null) {
       return Column(
         children: [
-          Container(
-            color: Color(0xFF50556F),
-            margin: EdgeInsets.only(top: 20),
-            child: SizedBox(
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Container(
               height: 40,
-              width: 350,
+              width: double.infinity,
+              margin: EdgeInsets.only(top: 20),
+              decoration: BoxDecoration(
+                color: Color(0xFF50556F),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Center(
                 child: Text(
                   'Accuracy',
@@ -235,16 +267,26 @@ class _BodyScanState extends State<BodyScan> {
               ),
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(bottom: 20),
-            color: Colors.white,
-            child: SizedBox(
+          Padding(
+            padding: EdgeInsets.only(left: 20, right: 20),
+            child: Container(
+              margin: EdgeInsets.only(bottom: 20),
               height: 100,
-              width: 350,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3),
+                  ),
+                ],
+              ),
               child: Center(
                 child: Text(
                   _confidenceFix!,
-                  // '${_output![0]['confidence'].toString()}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Color(0xFF50556F),
