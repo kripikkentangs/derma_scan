@@ -21,7 +21,6 @@ class HeaderContent extends StatelessWidget {
 
   buildAppBar() {
     return AppBar(
-      brightness: Brightness.light,
       elevation: 0,
       centerTitle: true,
       leading: BackButton(
