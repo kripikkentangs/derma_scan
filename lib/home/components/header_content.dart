@@ -27,7 +27,7 @@ class HeaderContent extends StatelessWidget {
         color: kTextColor,
       ),
       title: Text(
-        'Derma Scan',
+        'Read More',
         style: kDefaultFont,
       ),
     );

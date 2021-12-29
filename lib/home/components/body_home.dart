@@ -1,3 +1,6 @@
+import 'package:derma_scan/home/components/content.dart';
+import 'package:derma_scan/home/components/content_one.dart';
+import 'package:derma_scan/home/components/content_two.dart';
 import 'package:derma_scan/home/components/header.dart';
 import 'package:derma_scan/home/components/scan_button.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,9 @@ class BodyHome extends StatelessWidget {
           Header(),
           ScanButton(),
           JenisKanker(),
+          Content(),
+          ContentOne(),
+          ContentTwo()
         ],
       ),
     );

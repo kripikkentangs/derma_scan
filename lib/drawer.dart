@@ -33,12 +33,6 @@ class NavigationDrawerWidget extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             buildMenuItem(
-              text: 'Guided Book',
-              icon: Icons.book,
-              onClicked: () => selectedItem(context, 2),
-            ),
-            const SizedBox(height: 5),
-            buildMenuItem(
               text: 'About',
               icon: Icons.info,
               onClicked: () => showDialog<String>(

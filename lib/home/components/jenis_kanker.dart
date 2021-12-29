@@ -8,7 +8,7 @@ class JenisKanker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 20, top: 20),
+      padding: EdgeInsets.only(left: 10, top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

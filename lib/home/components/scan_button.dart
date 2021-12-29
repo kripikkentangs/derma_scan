@@ -8,7 +8,7 @@ class ScanButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.topCenter,
-        padding: EdgeInsets.only(top: 20),
+        padding: EdgeInsets.only(top: 18),
         child: ElevatedButton.icon(
           icon: Icon(Icons.open_in_new),
           label: Text(
