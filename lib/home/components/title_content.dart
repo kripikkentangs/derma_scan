@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../const.dart';
 
-class JenisKanker extends StatelessWidget {
-  const JenisKanker({Key? key}) : super(key: key);
+class TitleContent extends StatelessWidget {
+  final String titles;
+  const TitleContent({required this.titles});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,8 @@ class JenisKanker extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Jenis-jenis Kanker Kulit",
+            titles,
+            // "Jenis-jenis Kanker Kulit",
             textAlign: TextAlign.left,
             style: TextStyle(
               color: kTextColor,
