@@ -19,7 +19,7 @@ class BodyHome extends StatelessWidget {
           Header(),
           ScanButton(),
           TitleContent(titles: 'Jenis-jenis Kanker Kulit'),
-          // card jenis kulit
+          // card jenis kanker
           Container(
               height: 185,
               child: ListView(
