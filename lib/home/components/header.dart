@@ -1,4 +1,4 @@
-import 'package:derma_scan/home/components/header_content.dart';
+import 'package:derma_scan/home/components/article/header_article.dart';
 import 'package:flutter/material.dart';
 
 class Header extends StatelessWidget {
@@ -33,7 +33,7 @@ class Header extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => HeaderContent()),
+                    MaterialPageRoute(builder: (context) => HeaderArticle()),
                   );
                 },
               ),

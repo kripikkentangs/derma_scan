@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class Content extends StatelessWidget {
   final String content;
   final String image;
-  const Content({required this.content, required this.image});
+
+  const Content({
+    required this.content,
+    required this.image,
+  });
+  // const Content({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,9 +27,7 @@ class Content extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage(image),
-                          // image: AssetImage('assets/images/dokter.jpg'),
-                          fit: BoxFit.cover),
+                          image: AssetImage(image), fit: BoxFit.cover),
                     ),
                   ),
                 ),
@@ -33,7 +36,6 @@ class Content extends StatelessWidget {
                   child: Container(
                     margin: EdgeInsets.only(left: 5, right: 5),
                     child: Text(
-                      // 'Kapan Harus Menghubungi Dokter',
                       content,
                       style: TextStyle(fontFamily: 'Poppins', fontSize: 18),
                     ),

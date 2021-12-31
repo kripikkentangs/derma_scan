@@ -9,19 +9,18 @@ class TitleContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 10, top: 10),
+      padding: EdgeInsets.only(left: 10, top: 15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             titles,
-            // "Jenis-jenis Kanker Kulit",
             textAlign: TextAlign.left,
             style: TextStyle(
-              color: kTextColor,
-              fontFamily: 'Poppins',
-              fontSize: 18,
-            ),
+                color: kTextColor,
+                fontFamily: 'Poppins',
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
           ),
         ],
       ),
