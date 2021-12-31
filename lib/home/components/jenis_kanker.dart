@@ -21,11 +21,12 @@ class JenisKanker extends StatelessWidget {
               height: 120,
               width: 180,
               decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(images)),
+                image: DecorationImage(
+                    image: AssetImage(images), fit: BoxFit.cover),
               ),
             ),
             Container(
-              height: 40,
+              height: 49,
               width: 190,
               child: Center(
                 child: Text(

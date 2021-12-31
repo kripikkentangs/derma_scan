@@ -19,8 +19,9 @@ class BodyHome extends StatelessWidget {
           Header(),
           ScanButton(),
           TitleContent(titles: 'Jenis-jenis Kanker Kulit'),
+          // card jenis kulit
           Container(
-              height: 176,
+              height: 185,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -49,7 +50,7 @@ class BodyHome extends StatelessWidget {
                       );
                     },
                     child: JenisKanker(
-                      images: 'assets/images/dokter.jpg',
+                      images: 'assets/images/gejala.jpg',
                       type: 'Melanoma',
                     ),
                   ),
@@ -69,6 +70,7 @@ class BodyHome extends StatelessWidget {
                 ],
               )),
           TitleContent(titles: 'Tentang Kanker Kulit'),
+          // card content
           GestureDetector(
             onTap: () {
               Navigator.push(
