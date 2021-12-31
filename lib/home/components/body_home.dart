@@ -20,21 +20,51 @@ class BodyHome extends StatelessWidget {
           ScanButton(),
           TitleContent(titles: 'Jenis-jenis Kanker Kulit'),
           Container(
-              height: 183,
+              height: 176,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  JenisKanker(
-                    images: 'assets/images/dokter.jpg',
-                    type: 'Basal Cell Carcinoma',
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HeaderArticle()),
+                        );
+                      },
+                      child: JenisKanker(
+                        images: 'assets/images/dokter.jpg',
+                        type: 'Basal Cell Carcinoma',
+                      ),
+                    ),
                   ),
-                  JenisKanker(
-                    images: 'assets/images/dokter.jpg',
-                    type: 'Melanoma',
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HeaderArticle()),
+                      );
+                    },
+                    child: JenisKanker(
+                      images: 'assets/images/dokter.jpg',
+                      type: 'Melanoma',
+                    ),
                   ),
-                  JenisKanker(
-                    images: 'assets/images/dokter.jpg',
-                    type: 'Squamous Cell Carcinoma',
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => HeaderArticle()),
+                      );
+                    },
+                    child: JenisKanker(
+                      images: 'assets/images/dokter.jpg',
+                      type: 'Squamous Cell Carcinoma',
+                    ),
                   ),
                 ],
               )),

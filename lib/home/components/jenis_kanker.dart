@@ -9,36 +9,37 @@ class JenisKanker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 10, top: 3),
-      child: Column(
-        children: [
-          Container(
-            height: 130,
-            width: 180,
-            decoration: BoxDecoration(
-              image:
-                  DecorationImage(image: AssetImage(images), fit: BoxFit.cover),
+      padding: EdgeInsets.only(top: 3),
+      child: Card(
+        elevation: 6,
+        color: kTextColor,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: EdgeInsets.only(left: 5, right: 5, top: 5),
+              height: 120,
+              width: 180,
+              decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage(images)),
+              ),
             ),
-          ),
-          Container(
-            height: 50,
-            width: 180,
-            color: kTextColor,
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(5),
+            Container(
+              height: 40,
+              width: 190,
+              child: Center(
                 child: Text(
                   type,
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                      color: kBackgroundColor,
                       fontFamily: 'Poppins',
-                      fontSize: 15,
-                      color: kBackgroundColor),
+                      fontSize: 15),
                 ),
               ),
-            ),
-          ),
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
