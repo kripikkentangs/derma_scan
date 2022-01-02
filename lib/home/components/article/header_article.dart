@@ -31,7 +31,7 @@ class HeaderArticle extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(top: 20, left: 20, right: 20),
           child: Text(
-            'Kanker kulit adalah jenis kanker yang tumbuh di jaringan kulit. Kondisi ini ditandai dengan perubahan pada kulit, seperti munculnya benjolan, bercak, atau tahi lalat dengan bentuk dan ukuran yang tidak normal. \nAda tiga jenis kanker kulit yang paling sering terjadi, yaitu:\n- Karsinoma sel basal, yaitu kanker kulit yang berasal dari sel di bagian terdalam dari lapisan kulit terluar (epidermis).\n- Karsinoma sel skuamosa, yaitu kanker kulit yang berasal dari sel di bagian tengah dan terluar dari epidermis.\n- Melanoma, yaitu kanker kulit yang berasal dari sel penghasil pigmen kulit (melanosit).',
+            '\t\t\t\tKanker kulit adalah jenis kanker yang tumbuh di jaringan kulit. Kondisi ini ditandai dengan perubahan pada kulit, seperti munculnya benjolan, bercak, atau tahi lalat dengan bentuk dan ukuran yang tidak normal. \nAda tiga jenis kanker kulit yang paling sering terjadi, yaitu:\n- Karsinoma sel basal, yaitu kanker kulit yang berasal dari sel di bagian terdalam dari lapisan kulit terluar (epidermis).\n- Karsinoma sel skuamosa, yaitu kanker kulit yang berasal dari sel di bagian tengah dan terluar dari epidermis.\n- Melanoma, yaitu kanker kulit yang berasal dari sel penghasil pigmen kulit (melanosit).',
             textAlign: TextAlign.justify,
             style: TextStyle(
                 fontSize: 15, fontFamily: 'Poppins', color: kTextColor),

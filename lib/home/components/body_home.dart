@@ -80,7 +80,7 @@ class BodyHome extends StatelessWidget {
               );
             },
             child: Content(
-              content: 'Gejala Umum Kanker Kulit',
+              content: 'Gejala Kanker Kulit',
               image: 'assets/images/gejala.jpg',
             ),
           ),

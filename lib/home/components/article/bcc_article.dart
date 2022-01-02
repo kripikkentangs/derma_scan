@@ -28,9 +28,9 @@ class BccArticle extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
           child: Text(
-            'Kanker kulit adalah jenis kanker yang tumbuh di jaringan kulit. Kondisi ini ditandai dengan perubahan pada kulit, seperti munculnya benjolan, bercak, atau tahi lalat dengan bentuk dan ukuran yang tidak normal. \nAda tiga jenis kanker kulit yang paling sering terjadi, yaitu:\n- Karsinoma sel basal, yaitu kanker kulit yang berasal dari sel di bagian terdalam dari lapisan kulit terluar (epidermis).\n- Karsinoma sel skuamosa, yaitu kanker kulit yang berasal dari sel di bagian tengah dan terluar dari epidermis.\n- Melanoma, yaitu kanker kulit yang berasal dari sel penghasil pigmen kulit (melanosit).',
+            '\t\t\t\tKarsinoma Sel Sasal atau Basal Cell Carcinoma adalah kanker kulit yang menyerang sel basal. Kanker ini umumnya muncul di area kulit yang sering terkena sinar matahari, seperti wajah, kepala, atau leher. Sel basal adalah sel yang terletak di bagian paling bawah dari lapisan kulit terluar (epidermis). Sel ini berfungsi untuk memproduksi sel kulit baru dan menggantikan sel kulit lama yang mati melalui proses pengelupasan kulit. Pada karsinoma sel basal, produksi sel kulit menjadi tidak terkendali sehingga membentuk kanker.\n\t\t\t\tKarsinoma sel basal merupakan jenis kanker kulit yang paling sering terjadi, yaitu sekitar 75% dari semua kasus kanker kulit. Kanker ini cenderung tumbuh dengan lambat dan tidak menimbulkan gejala dalam waktu yang lama. Karsinoma sel basal juga umumnya tidak menyebar ke organ lain (metastasis). Akan tetapi, jika tidak ditangani dengan tepat, karsinoma sel basal bisa menyebar ke organ dan jaringan tubuh yang sehat di sekitarnya.',
             textAlign: TextAlign.justify,
             style: TextStyle(
                 fontSize: 15, fontFamily: 'Poppins', color: kTextColor),

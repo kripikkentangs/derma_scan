@@ -38,8 +38,12 @@ class NavigationDrawerWidget extends StatelessWidget {
               onClicked: () => showDialog<String>(
                 context: context,
                 builder: (BuildContext context) => AlertDialog(
-                  title: Text('About'),
-                  content: Text('This is a about alert!'),
+                  title: Text('Derma Scan'),
+                  content: Text(
+                    'Aplikasi untuk mengklasifikasi kanker kulit manusia.\n\nDeveloped by Bayu Satya Saputra',
+                    textAlign: TextAlign.justify,
+                    style: TextStyle(fontFamily: 'Poppins', fontSize: 14),
+                  ),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context, 'Close'),

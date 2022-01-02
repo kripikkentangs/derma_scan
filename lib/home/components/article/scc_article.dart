@@ -28,9 +28,9 @@ class SccArticle extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+          padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
           child: Text(
-            'Kanker kulit adalah jenis kanker yang tumbuh di jaringan kulit. Kondisi ini ditandai dengan perubahan pada kulit, seperti munculnya benjolan, bercak, atau tahi lalat dengan bentuk dan ukuran yang tidak normal. \nAda tiga jenis kanker kulit yang paling sering terjadi, yaitu:\n- Karsinoma sel basal, yaitu kanker kulit yang berasal dari sel di bagian terdalam dari lapisan kulit terluar (epidermis).\n- Karsinoma sel skuamosa, yaitu kanker kulit yang berasal dari sel di bagian tengah dan terluar dari epidermis.\n- Melanoma, yaitu kanker kulit yang berasal dari sel penghasil pigmen kulit (melanosit).',
+            '\t\t\t\tKarsinoma Sel Skuamosa atau Squamous Cell Carcinoma adalah kanker kulit yang menyerang sel skuamosa, yaitu sel yang membentuk lapisan tengah dan luar kulit. Kanker ini umumnya muncul di wajah, leher, tangan, dan kaki. Karsinoma sel skuamosa (KSS) menempati peringkat kedua untuk jenis kanker kulit yang paling sering terjadi. Meski biasanya muncul di area kulit yang sering terpapar sinar matahari, KSS juga dapat menyerang bagian tubuh lain yang memiliki sel skuamosa.\n\t\t\t\tKarsinoma sel skuamosa adalah jenis kanker kulit yang pertumbuhannya cenderung lambat. Namun, tidak seperti kanker kulit lain, kanker jenis ini dapat menyebar ke tulang dan organ tubuh lain. Pada kondisi ini, KSS akan lebih susah untuk disembuhkan.',
             textAlign: TextAlign.justify,
             style: TextStyle(
                 fontSize: 15, fontFamily: 'Poppins', color: kTextColor),
