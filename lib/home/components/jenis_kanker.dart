@@ -25,17 +25,20 @@ class JenisKanker extends StatelessWidget {
                     image: AssetImage(images), fit: BoxFit.cover),
               ),
             ),
-            Container(
-              height: 49,
-              width: 190,
-              child: Center(
-                child: Text(
-                  type,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: kBackgroundColor,
-                      fontFamily: 'Poppins',
-                      fontSize: 15),
+            Padding(
+              padding: const EdgeInsets.only(left: 5, right: 5),
+              child: Container(
+                height: 49,
+                width: 180,
+                child: Center(
+                  child: Text(
+                    type,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: kBackgroundColor,
+                        fontFamily: 'Poppins',
+                        fontSize: 15),
+                  ),
                 ),
               ),
             )

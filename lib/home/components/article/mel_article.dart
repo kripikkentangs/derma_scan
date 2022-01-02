@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../const.dart';
 
-class HeaderArticle extends StatelessWidget {
-  const HeaderArticle({Key? key}) : super(key: key);
+class MelArticle extends StatelessWidget {
+  const MelArticle({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,7 @@ class HeaderArticle extends StatelessWidget {
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30)),
             image: DecorationImage(
-                image: AssetImage('assets/images/kanker-kulit.jpg'),
-                fit: BoxFit.cover),
+                image: AssetImage('assets/images/mel.jpg'), fit: BoxFit.cover),
           ),
         ),
         Padding(

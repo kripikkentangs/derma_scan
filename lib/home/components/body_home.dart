@@ -1,11 +1,15 @@
+import 'package:derma_scan/home/components/article/bcc_article.dart';
+import 'package:derma_scan/home/components/article/pencegahan_article.dart';
+import 'package:derma_scan/home/components/article/pengobatan_article.dart';
 import 'package:derma_scan/home/components/content.dart';
 import 'package:derma_scan/home/components/header.dart';
 import 'package:derma_scan/home/components/scan_button.dart';
 import 'package:derma_scan/home/components/title_content.dart';
-import 'package:derma_scan/scan/scan.dart';
 import 'package:flutter/material.dart';
 
-import 'article/header_article.dart';
+import 'article/gejala_article.dart';
+import 'article/mel_article.dart';
+import 'article/scc_article.dart';
 import 'jenis_kanker.dart';
 
 class BodyHome extends StatelessWidget {
@@ -31,12 +35,11 @@ class BodyHome extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => HeaderArticle()),
+                          MaterialPageRoute(builder: (context) => BccArticle()),
                         );
                       },
                       child: JenisKanker(
-                        images: 'assets/images/dokter.jpg',
+                        images: 'assets/images/bcc.jpg',
                         type: 'Basal Cell Carcinoma',
                       ),
                     ),
@@ -45,12 +48,11 @@ class BodyHome extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => HeaderArticle()),
+                        MaterialPageRoute(builder: (context) => MelArticle()),
                       );
                     },
                     child: JenisKanker(
-                      images: 'assets/images/gejala.jpg',
+                      images: 'assets/images/mel.jpg',
                       type: 'Melanoma',
                     ),
                   ),
@@ -58,12 +60,11 @@ class BodyHome extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => HeaderArticle()),
+                        MaterialPageRoute(builder: (context) => SccArticle()),
                       );
                     },
                     child: JenisKanker(
-                      images: 'assets/images/dokter.jpg',
+                      images: 'assets/images/scc.jpg',
                       type: 'Squamous Cell Carcinoma',
                     ),
                   ),
@@ -75,7 +76,7 @@ class BodyHome extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HeaderArticle()),
+                MaterialPageRoute(builder: (context) => GejalaArticle()),
               );
             },
             child: Content(
@@ -87,7 +88,7 @@ class BodyHome extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Scan()),
+                MaterialPageRoute(builder: (context) => PencegahanArticle()),
               );
             },
             child: Content(
@@ -99,12 +100,12 @@ class BodyHome extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HeaderArticle()),
+                MaterialPageRoute(builder: (context) => PengobatanArticle()),
               );
             },
             child: Content(
               content: 'Pengobatan Kanker Kulit',
-              image: 'assets/images/pencegahan.jpg',
+              image: 'assets/images/pengobatan.jpg',
             ),
           ),
         ],
