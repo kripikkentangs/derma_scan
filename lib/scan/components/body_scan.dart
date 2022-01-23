@@ -22,7 +22,7 @@ class _BodyScanState extends State<BodyScan> {
 
   Future getImages(ImageSource source) async {
     setState(() {
-      _loading = true;
+      _loading = false;
     });
 
     var image = await picker.getImage(
@@ -82,8 +82,8 @@ class _BodyScanState extends State<BodyScan> {
 
   loadModel() async {
     await Tflite.loadModel(
-      model: 'assets/models/modelres10%val.tflite',
-      labels: 'assets/models/labelsres.txt',
+      model: 'assets/models/modelres100.tflite',
+      labels: 'assets/models/labelsres100.txt',
     );
   }
 
