@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 import '../const.dart';
 import '../drawer.dart';
 import 'components/body_home.dart';
@@ -25,7 +23,10 @@ class HomeScreen extends StatelessWidget {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: SvgPicture.asset("assets/icons/side.svg"),
+          icon: Icon(
+            Icons.menu,
+            color: kTextColor,
+          ),
           onPressed: () => Scaffold.of(context).openDrawer(),
         ),
       ),
