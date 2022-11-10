@@ -1,4 +1,4 @@
-import 'package:derma_scan/scan/scan.dart';
+import 'package:derma_scan/scan/scan_view.dart';
 import 'package:flutter/material.dart';
 
 class ScanButton extends StatelessWidget {

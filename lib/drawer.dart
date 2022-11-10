@@ -1,7 +1,8 @@
+import 'package:derma_scan/historySqf/history_sqf.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
-import 'scan/Scan.dart';
+import 'scan/scan_view.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   NavigationDrawerWidget({Key? key}) : super(key: key);
@@ -26,6 +27,12 @@ class NavigationDrawerWidget extends StatelessWidget {
               text: 'Scan',
               icon: Icons.camera_alt,
               onClicked: () => selectedItem(context, 1),
+            ),
+            const SizedBox(height: 5),
+            buildMenuItem(
+              text: 'History SQLite',
+              icon: Icons.history,
+              onClicked: () => selectedItem(context, 2),
             ),
             const SizedBox(height: 5),
             Divider(
@@ -89,6 +96,10 @@ class NavigationDrawerWidget extends StatelessWidget {
       case 1:
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => Scan()));
+        break;
+      case 2:
+      Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HistorySqf()));
         break;
     }
   }
