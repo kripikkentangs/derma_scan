@@ -1,3 +1,4 @@
+import 'package:derma_scan/historyHive/history_hive.dart';
 import 'package:derma_scan/historySqf/history_sqf.dart';
 import 'package:flutter/material.dart';
 
@@ -33,6 +34,12 @@ class NavigationDrawerWidget extends StatelessWidget {
               text: 'History SQLite',
               icon: Icons.history,
               onClicked: () => selectedItem(context, 2),
+            ),
+            const SizedBox(height: 5),
+            buildMenuItem(
+              text: 'History Hive',
+              icon: Icons.history,
+              onClicked: () => selectedItem(context, 3),
             ),
             const SizedBox(height: 5),
             Divider(
@@ -98,8 +105,12 @@ class NavigationDrawerWidget extends StatelessWidget {
             .push(MaterialPageRoute(builder: (context) => Scan()));
         break;
       case 2:
-      Navigator.of(context)
+        Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => HistorySqf()));
+        break;
+      case 3:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HistoryHive()));
         break;
     }
   }

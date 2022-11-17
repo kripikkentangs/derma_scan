@@ -1,13 +1,18 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:tflite/tflite.dart';
+import 'package:derma_scan/model/model.dart';
+import 'package:derma_scan/model/utility.dart';
+import 'package:derma_scan/db/db_helper.dart';
 import '../../const.dart';
 
 class BodyScan extends StatefulWidget {
-  const BodyScan({Key? key}) : super(key: key);
+  final Hasil? hasil;
+  const BodyScan({this.hasil}) : super();
 
   @override
   _BodyScanState createState() => _BodyScanState();
@@ -18,21 +23,22 @@ class _BodyScanState extends State<BodyScan> {
   File? _image;
   List? _output;
   String? _confidenceFix;
-  final picker = ImagePicker();
+  DbHelper dbHelper = DbHelper();
+  late List<Hasil> listHasil;
 
   Future getImages(ImageSource source) async {
     setState(() {
       _loading = false;
     });
 
-    var image = await picker.getImage(
+    var image = await ImagePicker().getImage(
       source: source,
       maxWidth: 1920,
       maxHeight: 1920,
     );
 
     if (image != null) {
-      File? croppedImage = await ImageCropper.cropImage(
+      File? croppedImage = await ImageCropper().cropImage(
           sourcePath: image.path,
           aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
           compressQuality: 75,
@@ -51,8 +57,27 @@ class _BodyScanState extends State<BodyScan> {
             hideBottomControls: true,
           ));
       classifyImage(croppedImage!);
+      String imgString = Utility.base64String(await croppedImage.readAsBytes());
+      print('Image Cropped: ${croppedImage.path}');
+      Hasil hasil = Hasil(imgString);
+      dbHelper.saveHasil(hasil);
+
+      // List<Hasil> imgstr = <Hasil>[];
+      // Hasil hasil = Hasil(imgstr);
+      // var imageBytes = await croppedImage.readAsBytes();
+      // print("IMAGE PICKED: ${croppedImage.path}");
+      // String base64Image = base64Encode(imageBytes);
+      // imgstr.add(Hasil.fromMap(base64Image));
+
+      // dbHelper.saveHasil(hasil);
+
+      // return base64Image;
+
+      // refreshImages();
 
       setState(() {
+        // Hasil hasil = Hasil(imgString);
+        dbHelper.saveHasil(hasil);
         _image = croppedImage;
         _loading = false;
       });
@@ -71,7 +96,14 @@ class _BodyScanState extends State<BodyScan> {
         imageMean: 127.5,
         imageStd: 127.5);
 
+    await dbHelper.saveHasil(Hasil.fromMap({
+      // 'id': widget.hasil!.id,
+      'output': _output!,
+      'confidenceFix': _confidenceFix!
+    }));
+
     setState(() {
+      DbHelper();
       _loading = false;
       _output = output;
 
@@ -87,9 +119,20 @@ class _BodyScanState extends State<BodyScan> {
     );
   }
 
+  // refreshImages() {
+  //   dbHelper.getAllHasil().then((imgs) {
+  //     setState(() {
+  //       images.clear();
+  //       images.addAll(imgs);
+  //     });
+  //   });
+  // }
+
   @override
   void initState() {
     super.initState();
+    dbHelper = DbHelper();
+    // images = [];
     _loading = false;
 
     loadModel().then((value) {
@@ -346,6 +389,4 @@ class _BodyScanState extends State<BodyScan> {
       openBackgroundColor: Colors.white,
     );
   }
-
-  // getConfident() {}
 }

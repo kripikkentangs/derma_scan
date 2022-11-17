@@ -4,13 +4,13 @@ import 'package:path/path.dart';
 
 class DbHelper {
   static final DbHelper _instance = DbHelper._internal();
-  static Database? _database;
+  Database? _database;
 
-  final String tableName = 'tableHasil';
-  final String columnId = 'id';
-  final String columnImage = 'image';
-  final String cloumnOutput = 'output';
-  final String columnConfidenceFix = 'confidenceFix';
+  String tableName = 'tableHasil';
+  String columnId = 'id';
+  String columnImage = 'image';
+  String cloumnOutput = 'output';
+  String columnConfidenceFix = 'confidenceFix';
 
   DbHelper._internal();
   factory DbHelper() => _instance;
@@ -31,36 +31,38 @@ class DbHelper {
   }
 
   Future<void> _onCreate(Database db, int version) async {
-    var sql = "CREATE TABLE $tableName($columnId INTEGER PRIMARY KEY, "
-        "$columnImage TEXT,"
-        "$cloumnOutput TEXT,"
-        "$columnConfidenceFix TEXT";
+    var sql =
+        'CREATE TABLE $tableName ($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnImage TEXT, $cloumnOutput TEXT, $columnConfidenceFix TEXT)';
     await db.execute(sql);
   }
 
   Future<int?> saveHasil(Hasil hasil) async {
     var dbClient = await _db;
-    return await dbClient!.insert(tableName, hasil.toMap());
+    var query = await dbClient!.insert(tableName, hasil.toMap());
+    print('saveHasil: hasil id: ${hasil.id}');
+    print('saveHasil: hasil image: ${hasil.image}');
+    print('saveHasil: hasil output: ${hasil.output}');
+    print('saveHasil: hasil id: ${hasil.confidenceFix}');
+    return query;
   }
 
   Future<List?> getAllHasil() async {
     var dbClient = await _db;
     var result = await dbClient!.query(tableName,
         columns: [columnId, columnImage, cloumnOutput, columnConfidenceFix]);
+    // List<Hasil> photos = [];
+    // if (result.isNotEmpty) {
+    //   for (int i = 0; i < result.length; i++) {
+    //     photos.add(Hasil.fromMap(Map<String, dynamic>.from(result[i])));
+    //   }
+    // }
 
     return result.toList();
   }
-
-  // Future<int?> updateHasil(Hasil hasil) async {
-  //   var dbClient = await _db;
-  //   return await dbClient!.update(tableName, hasil.toMap(),
-  //       where: '$columnId = ?', whereArgs: [hasil.id]);
-  // }
 
   Future<int?> deleteHasil(int id) async {
     var dbClient = await _db;
     return await dbClient!
         .delete(tableName, where: '$columnId = ?', whereArgs: [id]);
   }
-
 }
