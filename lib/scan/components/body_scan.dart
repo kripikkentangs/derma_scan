@@ -56,18 +56,19 @@ class _BodyScanState extends State<BodyScan> {
             cropFrameColor: Colors.white,
             hideBottomControls: true,
           ));
-      classifyImage(croppedImage!);
-      String imgString = Utility.base64String(await croppedImage.readAsBytes());
+      String imgString =
+          Utility.base64String(await croppedImage!.readAsBytes());
       print('Image Cropped: ${croppedImage.path}');
-      Hasil hasil = Hasil(imgString);
-      dbHelper.saveHasil(hasil);
+      Hasil hasil = Hasil(0, imgString, id: null, image: '');
+      DbHelper().saveHasil(hasil);
+      classifyImage(croppedImage);
 
-      // List<Hasil> imgstr = <Hasil>[];
-      // Hasil hasil = Hasil(imgstr);
+      // List<Hasil> imgString = <Hasil>[];
+      // Hasil hasil = Hasil(imgString);
       // var imageBytes = await croppedImage.readAsBytes();
       // print("IMAGE PICKED: ${croppedImage.path}");
       // String base64Image = base64Encode(imageBytes);
-      // imgstr.add(Hasil.fromMap(base64Image));
+      // imgString.add(Hasil.fromMap(base64Image));
 
       // dbHelper.saveHasil(hasil);
 
@@ -76,8 +77,9 @@ class _BodyScanState extends State<BodyScan> {
       // refreshImages();
 
       setState(() {
-        // Hasil hasil = Hasil(imgString);
-        dbHelper.saveHasil(hasil);
+        // dbHelper = DbHelper();
+        // Hasil hasil = Hasil(0, imgString);
+        // DbHelper().saveHasil(hasil);
         _image = croppedImage;
         _loading = false;
       });
@@ -96,11 +98,11 @@ class _BodyScanState extends State<BodyScan> {
         imageMean: 127.5,
         imageStd: 127.5);
 
-    await dbHelper.saveHasil(Hasil.fromMap({
-      // 'id': widget.hasil!.id,
-      'output': _output!,
-      'confidenceFix': _confidenceFix!
-    }));
+    // await dbHelper.saveHasil(Hasil.fromMap({
+    //   // 'id': widget.hasil!.id,
+    //   // 'output': _output!,
+    //   'confidenceFix': _confidenceFix!
+    // }));
 
     setState(() {
       DbHelper();

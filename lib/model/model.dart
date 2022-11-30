@@ -4,7 +4,7 @@ class Hasil {
   String? output;
   String? confidenceFix;
 
-  Hasil(imgString,{this.id, this.image, this.output, this.confidenceFix});
+  Hasil(int, imgString,{this.id, this.image, this.output, this.confidenceFix});
 
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();

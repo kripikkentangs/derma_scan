@@ -32,13 +32,13 @@ class _HistorySqfState extends State<HistorySqf> {
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 title: Text(
-                  '${hasil.image} ${hasil.output}',
+                  '${hasil.image}',
                   style: TextStyle(
                       fontSize: 18,
                       fontStyle: FontStyle.italic,
                       color: Colors.deepOrangeAccent),
                 ),
-                subtitle: Text('${hasil.confidenceFix}'),
+                // subtitle: Text('${hasil.confidenceFix}'),
                 trailing: IconButton(
                   icon: Icon(Icons.delete),
                   onPressed: () {

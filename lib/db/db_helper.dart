@@ -32,7 +32,7 @@ class DbHelper {
 
   Future<void> _onCreate(Database db, int version) async {
     var sql =
-        'CREATE TABLE $tableName ($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnImage TEXT, $cloumnOutput TEXT, $columnConfidenceFix TEXT)';
+        'CREATE TABLE $tableName ($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnImage TEXT';
     await db.execute(sql);
   }
 
@@ -41,8 +41,8 @@ class DbHelper {
     var query = await dbClient!.insert(tableName, hasil.toMap());
     print('saveHasil: hasil id: ${hasil.id}');
     print('saveHasil: hasil image: ${hasil.image}');
-    print('saveHasil: hasil output: ${hasil.output}');
-    print('saveHasil: hasil id: ${hasil.confidenceFix}');
+    // print('saveHasil: hasil output: ${hasil.output}');
+    // print('saveHasil: hasil id: ${hasil.confidenceFix}');
     return query;
   }
 
