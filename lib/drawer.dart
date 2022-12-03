@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
-import 'scan/Scan.dart';
+import 'scan/scan_screen.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
   NavigationDrawerWidget({Key? key}) : super(key: key);
@@ -88,7 +88,7 @@ class NavigationDrawerWidget extends StatelessWidget {
         break;
       case 1:
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Scan()));
+            .push(MaterialPageRoute(builder: (context) => ScanScreen()));
         break;
     }
   }

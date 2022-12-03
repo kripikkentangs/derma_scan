@@ -1,4 +1,4 @@
-import 'package:derma_scan/scan/scan.dart';
+import 'package:derma_scan/scan/scan_screen.dart';
 import 'package:flutter/material.dart';
 
 class ScanButton extends StatelessWidget {
@@ -18,7 +18,7 @@ class ScanButton extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Scan()),
+              MaterialPageRoute(builder: (context) => ScanScreen()),
             );
           },
           style: ElevatedButton.styleFrom(
