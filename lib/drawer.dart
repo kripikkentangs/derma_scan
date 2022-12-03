@@ -1,3 +1,4 @@
+import 'package:derma_scan/history/history_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'home/home_screen.dart';
@@ -26,6 +27,12 @@ class NavigationDrawerWidget extends StatelessWidget {
               text: 'Scan',
               icon: Icons.camera_alt,
               onClicked: () => selectedItem(context, 1),
+            ),
+            const SizedBox(height: 5),
+            buildMenuItem(
+              text: 'Scan',
+              icon: Icons.history,
+              onClicked: () => selectedItem(context, 2),
             ),
             const SizedBox(height: 5),
             Divider(
@@ -89,6 +96,10 @@ class NavigationDrawerWidget extends StatelessWidget {
       case 1:
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => ScanScreen()));
+        break;
+      case 2:
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => HistoryScreen()));
         break;
     }
   }
