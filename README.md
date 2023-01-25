@@ -1,16 +1,6 @@
 # derma_scan
 
-A new Flutter project.
+Aplikasi Klasifikasi Kanker Kulit Menggunakan Convolutional Neural Network
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![InstaMocks_20230125_152500589](https://user-images.githubusercontent.com/94543338/214527079-cffebded-9a71-47aa-9dfc-03566160b421.png)
+![InstaMocks_20230125_152418502](https://user-images.githubusercontent.com/94543338/214527088-89a72406-7f24-4deb-93e9-3bfb56619596.png)
