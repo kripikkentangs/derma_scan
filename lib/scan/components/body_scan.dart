@@ -32,7 +32,7 @@ class _BodyScanState extends State<BodyScan> {
     );
 
     if (image != null) {
-      File? croppedImage = await ImageCropper.cropImage(
+      File? croppedImage = await ImageCropper().cropImage(
           sourcePath: image.path,
           aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
           compressQuality: 75,
