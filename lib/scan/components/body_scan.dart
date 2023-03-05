@@ -63,6 +63,8 @@ class _BodyScanState extends State<BodyScan> {
     }
   }
 
+  Future storeImage(File image) async {}
+
   Future classifyImage(File image) async {
     var output = await Tflite.runModelOnImage(
         path: image.path,
