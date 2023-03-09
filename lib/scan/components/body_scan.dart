@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -56,28 +55,11 @@ class _BodyScanState extends State<BodyScan> {
             cropFrameColor: Colors.white,
             hideBottomControls: true,
           ));
-      String imgString =
-          Utility.base64String(await croppedImage!.readAsBytes());
-      print('Image Cropped: ${croppedImage.path}');
-      Hasil hasil = Hasil(0, imgString, id: null, image: '');
-      DbHelper().saveHasil(hasil);
-      classifyImage(croppedImage);
-
-      // List<Hasil> imgString = <Hasil>[];
-      // Hasil hasil = Hasil(imgString);
-      // var imageBytes = await croppedImage.readAsBytes();
-      // print("IMAGE PICKED: ${croppedImage.path}");
-      // String base64Image = base64Encode(imageBytes);
-      // imgString.add(Hasil.fromMap(base64Image));
-
-      // dbHelper.saveHasil(hasil);
-
-      // return base64Image;
-
-      // refreshImages();
+      classifyImage(croppedImage!);
+      storeImage(croppedImage);
 
       setState(() {
-        // dbHelper = DbHelper();
+        dbHelper = DbHelper();
         // Hasil hasil = Hasil(0, imgString);
         // DbHelper().saveHasil(hasil);
         _image = croppedImage;
@@ -90,13 +72,26 @@ class _BodyScanState extends State<BodyScan> {
     }
   }
 
-  Future classifyImage(File image) async {
-    var output = await Tflite.runModelOnImage(
-        path: image.path,
-        numResults: 3,
-        threshold: 0.5,
-        imageMean: 127.5,
-        imageStd: 127.5);
+  // Future storeOutput(output, confidenceFix) async {
+  //   DbHelper();
+  //
+  //   await dbHelper.saveHasil(Hasil.fromMap({
+  //     // 'id': widget.hasil!.id,
+  //     'output': _output!,
+  //     'confidenceFix': _confidenceFix!
+  //   }));
+  // }
+
+  Future storeImage(File image) async {
+    DbHelper();
+
+    String imgString = Utility.base64String(await image.readAsBytes());
+
+    print("IMAGE PICKED: ${image.path}");
+
+    Hasil hasil = Hasil(0, imgString);
+    DbHelper().saveHasil(hasil);
+    print("IMAGE STORED: $hasil");
 
     // await dbHelper.saveHasil(Hasil.fromMap({
     //   // 'id': widget.hasil!.id,
@@ -105,7 +100,21 @@ class _BodyScanState extends State<BodyScan> {
     // }));
 
     setState(() {
-      DbHelper();
+      dbHelper = DbHelper();
+      Hasil hasil = Hasil(0, imgString);
+      DbHelper().saveHasil(hasil);
+    });
+  }
+
+  Future classifyImage(File image) async {
+    var output = await Tflite.runModelOnImage(
+        path: image.path,
+        numResults: 3,
+        threshold: 0.5,
+        imageMean: 127.5,
+        imageStd: 127.5);
+
+    setState(() {
       _loading = false;
       _output = output;
 
@@ -120,15 +129,6 @@ class _BodyScanState extends State<BodyScan> {
       labels: 'assets/models/labelsres100.txt',
     );
   }
-
-  // refreshImages() {
-  //   dbHelper.getAllHasil().then((imgs) {
-  //     setState(() {
-  //       images.clear();
-  //       images.addAll(imgs);
-  //     });
-  //   });
-  // }
 
   @override
   void initState() {

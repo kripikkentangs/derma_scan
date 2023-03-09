@@ -9,8 +9,8 @@ class DbHelper {
   String tableName = 'tableHasil';
   String columnId = 'id';
   String columnImage = 'image';
-  String cloumnOutput = 'output';
-  String columnConfidenceFix = 'confidenceFix';
+  // String columnOutput = 'output';
+  // String columnConfidenceFix = 'confidenceFix';
 
   DbHelper._internal();
   factory DbHelper() => _instance;
@@ -26,38 +26,39 @@ class DbHelper {
   Future<Database?> _initDb() async {
     String databasePath = await getDatabasesPath();
     String path = join(databasePath, 'hasil.db');
+    print('DATABASE PATH: $databasePath');
 
     return await openDatabase(path, version: 1, onCreate: _onCreate);
   }
 
   Future<void> _onCreate(Database db, int version) async {
     var sql =
-        'CREATE TABLE $tableName ($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnImage TEXT';
+        'CREATE TABLE $tableName ($columnId INTEGER PRIMARY KEY AUTOINCREMENT, $columnImage TEXT)';
     await db.execute(sql);
   }
 
   Future<int?> saveHasil(Hasil hasil) async {
     var dbClient = await _db;
-    var query = await dbClient!.insert(tableName, hasil.toMap());
+    hasil.id = await dbClient!.insert(tableName, hasil.toMap());
     print('saveHasil: hasil id: ${hasil.id}');
     print('saveHasil: hasil image: ${hasil.image}');
     // print('saveHasil: hasil output: ${hasil.output}');
     // print('saveHasil: hasil id: ${hasil.confidenceFix}');
-    return query;
+    return hasil.id;
   }
 
   Future<List?> getAllHasil() async {
     var dbClient = await _db;
-    var result = await dbClient!.query(tableName,
-        columns: [columnId, columnImage, cloumnOutput, columnConfidenceFix]);
-    // List<Hasil> photos = [];
-    // if (result.isNotEmpty) {
-    //   for (int i = 0; i < result.length; i++) {
-    //     photos.add(Hasil.fromMap(Map<String, dynamic>.from(result[i])));
-    //   }
-    // }
+    List<Map> maps =
+        await dbClient!.query(tableName, columns: [columnId, columnImage]);
+    List<Hasil> photos = [];
+    if (maps.isNotEmpty) {
+      for (int i = 0; i < maps.length; i++) {
+        photos.add(Hasil.fromMap(Map<String, dynamic>.from(maps[i])));
+      }
+    }
 
-    return result.toList();
+    return maps.toList();
   }
 
   Future<int?> deleteHasil(int id) async {
